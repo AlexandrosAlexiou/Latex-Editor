@@ -1,0 +1,7 @@
+.classpath
+.idea/
+.project
+.settings/
+Latex Editor.iml
+bin/
+build.fxbuild

@@ -24,7 +24,7 @@ import javafx.stage.Window;
 
 
 
-public class View extends Application implements Initializable{
+public class Gui extends Application implements Initializable{
 	private String path;
 	private boolean letter=false;
 	private boolean article=false;
@@ -49,7 +49,7 @@ public class View extends Application implements Initializable{
 		root=FXMLLoader.load(getClass().getResource("first.fxml"));
 		window=primaryStage;
 		primaryStage.setTitle("3A LaTeX Editor");
-		Image image=new Image("/images/tex.jpg");
+		Image image=new Image("images/tex.jpg");
 		window.getIcons().add(image);
 		primaryStage.setScene(new Scene(root,600,750));
 		primaryStage.show();
@@ -314,7 +314,6 @@ public class View extends Application implements Initializable{
 
 	public static void main(String[] args){
 		launch(args);
-
 	}
 }
 

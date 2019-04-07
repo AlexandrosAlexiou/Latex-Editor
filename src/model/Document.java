@@ -1,12 +1,12 @@
 package model;
 
 
-public class Document {
+public class Document{
 
     private String contents;
     private String versionID;
 
-    private Document(String contents, String versionID){
+    public Document(String contents, String versionID){
         this.contents=contents;
         this.versionID=versionID;
     }

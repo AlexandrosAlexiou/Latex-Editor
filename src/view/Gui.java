@@ -27,7 +27,7 @@ import javafx.stage.Window;
 
 
 
-public class View extends Application implements Initializable{
+public class Gui extends Application implements Initializable{
 	private String path;
 	private boolean letter=false;
 	private boolean article=false;

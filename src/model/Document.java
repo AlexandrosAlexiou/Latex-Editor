@@ -1,6 +1,5 @@
 package model;
 
-
 public class Document{
 
     private String contents;
@@ -12,7 +11,8 @@ public class Document{
     }
 
     public void setContents(String template){
-
+        this.contents=null;
+        this.contents=template;
     }
 
     public String getContents(){

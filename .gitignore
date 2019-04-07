@@ -7,3 +7,6 @@ bin/
 build.fxbuild
 .DS_Store
  src/.DS_Store
+Latex-Editor.iml
+out/
+src/sample/

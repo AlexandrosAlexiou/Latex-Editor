@@ -5,3 +5,5 @@
 Latex Editor.iml
 bin/
 build.fxbuild
+.DS_Store
+ src/.DS_Store

@@ -1,11 +1,11 @@
 package view;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import controller.LatexEditorController;
 import javafx.application.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,9 +43,12 @@ public class Gui extends Application implements Initializable{
 	@FXML private CheckMenuItem offBox; 
 	@FXML private CheckMenuItem volatileBox;
 	@FXML private CheckMenuItem stableBox;
-	
-	
-	
+	LatexEditorController controller;
+
+	private Gui() throws Exception {
+		controller=new LatexEditorController();
+	}
+
 	@Override
 	public void start(Stage primaryStage)throws Exception{
 		Parent root;
@@ -315,7 +318,8 @@ public class Gui extends Application implements Initializable{
 		myText.insertText(myText.getCaretPosition(),"\\item Enter your text here ");
 	}
 
-	public static void main(String[] args){
+	public static void main(String[] args)throws Exception{
+		Gui gui = new Gui();
 		launch(args);
 
 	}

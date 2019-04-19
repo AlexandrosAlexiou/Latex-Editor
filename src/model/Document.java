@@ -5,6 +5,8 @@ public class Document{
     private String contents;
     private String versionID;
 
+    public Document(){};
+
     public Document(String contents, String versionID){
         this.contents=contents;
         this.versionID=versionID;

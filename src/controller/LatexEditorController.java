@@ -4,7 +4,11 @@ import model.DocumentManager;
 
 public class LatexEditorController{
 
-    DocumentManager manager =new DocumentManager();
+    private DocumentManager manager =new DocumentManager();
 
     public LatexEditorController() throws Exception {}
+
+   public String enact(){
+        return manager.createDocument("report").getContents();
+    }
 }

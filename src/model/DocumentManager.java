@@ -31,5 +31,4 @@ public class DocumentManager{
         }
         return new Document();
     }
-
 }

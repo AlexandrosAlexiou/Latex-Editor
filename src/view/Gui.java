@@ -43,12 +43,11 @@ public class Gui extends Application implements Initializable{
 	@FXML private CheckMenuItem offBox; 
 	@FXML private CheckMenuItem volatileBox;
 	@FXML private CheckMenuItem stableBox;
-	LatexEditorController controller;
+	private LatexEditorController controller=new LatexEditorController();
 
-	private Gui() throws Exception {
-		controller=new LatexEditorController();
+	public Gui()throws Exception{
+
 	}
-
 	@Override
 	public void start(Stage primaryStage)throws Exception{
 		Parent root;
@@ -117,7 +116,7 @@ public class Gui extends Application implements Initializable{
 			alreadySaved=false;
 			letter=false;
 			article=false;
-			myText.setText("Report");
+			myText.setText(this.controller.enact());
 			myLabel.setText("Report");
 			//TODO edw typwnw tagmeno template
 		}

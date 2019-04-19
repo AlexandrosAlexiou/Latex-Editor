@@ -18,8 +18,8 @@ public class Document{
     }
 
     public String getContents(){
-        String lala="lala";
-        return lala;
+
+        return this.contents;
     }
 
     public void save(){

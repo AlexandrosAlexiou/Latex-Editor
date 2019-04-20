@@ -10,7 +10,7 @@ public class FileWriter {
     public FileWriter(String savepath){
         this.savepath=savepath;
     }
-    public void writetofile(String documentContents)throws Exception {
+    public void writetofile(String documentContents){
         try {
             Files.write(Paths.get(this.savepath), documentContents.getBytes());
         } catch (IOException e) {

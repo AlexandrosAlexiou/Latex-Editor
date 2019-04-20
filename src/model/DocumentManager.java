@@ -1,20 +1,18 @@
 package model;
 
-
-
 public class DocumentManager{
     private Document letter;
     private Document book;
     private Document report;
     private Document article;
     private Document emptyDoc;
+    private FileReader reader = new FileReader();
 
     public DocumentManager() throws Exception{
-        FileReader filereader= new FileReader();
-        this.letter=new Document(filereader.readFile("tex templates/letter-template.tex"),"id0");
-        this.book=new Document(filereader.readFile("tex templates/book-template.tex"),"id0");
-        this.report=new Document(filereader.readFile("tex templates/report-template.tex"),"id0");
-        this.article=new Document(filereader.readFile("tex templates/article-template.tex"),"id0");
+        this.letter=new Document(reader.readFile("tex templates/letter-template.tex"),"id0");
+        this.book=new Document(reader.readFile("tex templates/book-template.tex"),"id0");
+        this.report=new Document(reader.readFile("tex templates/report-template.tex"),"id0");
+        this.article=new Document(reader.readFile("tex templates/article-template.tex"),"id0");
         this.emptyDoc=new Document();
     }
 
@@ -34,9 +32,11 @@ public class DocumentManager{
         return this.emptyDoc;
     }
     public void saveDocumentToDisk(String path,String typed)throws Exception{
-        FileWriter mywriter = new FileWriter(path);
-        mywriter.writetofile(typed);
-
+        FileWriter writer = new FileWriter(path);
+        writer.writetofile(typed);
     }
 
+    public String openDocumentFromDisk(String path)throws Exception{
+        return reader.readFile(path);
+    }
 }

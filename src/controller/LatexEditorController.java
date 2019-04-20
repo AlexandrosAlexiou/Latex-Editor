@@ -26,4 +26,8 @@ public class LatexEditorController{
     public void saveTemplateDocument(String path,String text)throws Exception{
         manager.saveDocumentToDisk(path,text);
     }
+
+    public String openFile(String path)throws Exception{
+        return manager.openDocumentFromDisk(path);
+    }
 }

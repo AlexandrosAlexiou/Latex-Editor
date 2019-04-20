@@ -21,10 +21,8 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-
-
 public class Gui extends Application implements Initializable{
-	private String path;
+
 	private boolean letter=false;
 	private boolean article=false;
 	private Stage window;
@@ -202,13 +200,15 @@ public class Gui extends Application implements Initializable{
 	}
 
 	@FXML
-	private void openFile(){
+	private void openFile()throws Exception{
+        String path;
 		FileChooser fc=new FileChooser();
 		fc.getExtensionFilters().add(new ExtensionFilter("TeX Files","*.tex"));
 		File selected=fc.showOpenDialog(null);
 		if (selected!=null) {
 			path=selected.getAbsolutePath();
 			System.out.println("This is the path:"+path);
+			myText.setText(controller.openFile(path));
 		}
 		else {
 			System.out.println("Invalid File");

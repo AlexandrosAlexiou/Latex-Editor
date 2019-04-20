@@ -22,10 +22,6 @@ public class Document{
         return this.contents;
     }
 
-    public void save(){
-
-    }
-
     public Document cloneDeep(){
 
         return new Document(new String(this.contents),new String(this.versionID));

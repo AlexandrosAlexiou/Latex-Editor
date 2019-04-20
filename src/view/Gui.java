@@ -1,13 +1,10 @@
 package view;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import controller.LatexEditorController;
 import javafx.application.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
@@ -40,14 +36,13 @@ public class Gui extends Application implements Initializable{
 	@FXML private Menu saveStrategy;
 	@FXML private TextArea myText;
 	@FXML private CheckMenuItem onBox;
-	@FXML private CheckMenuItem offBox; 
+	@FXML private CheckMenuItem offBox;
 	@FXML private CheckMenuItem volatileBox;
 	@FXML private CheckMenuItem stableBox;
 	private LatexEditorController controller=new LatexEditorController();
 
-	public Gui()throws Exception{
+	public Gui()throws Exception{}
 
-	}
 	@Override
 	public void start(Stage primaryStage)throws Exception{
 		Parent root;
@@ -61,9 +56,9 @@ public class Gui extends Application implements Initializable{
 		primaryStage.setOnCloseRequest(e->{
 			e.consume();
 			closeProgram();
-		});	
+		});
 	}
-	
+
 	/*
 	 * This method sets defaults for the application window
 	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
@@ -72,31 +67,29 @@ public class Gui extends Application implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1){
 		onBox.setSelected(true);
 		volatileBox.setSelected(true);
-			
-	}	
+
+	}
 
 	@FXML
-	private void save(){
-		String typed=myText.getText();
+	private void save()throws Exception{
+		String text=myText.getText();
 		//alert.display("You typed:", typed);
-		if (!alreadySaved) {	
+		if (!alreadySaved) {
 				//if i haven't saved already!
 			FileChooser fc=new FileChooser();
 			Window stage=myMenuBar.getScene().getWindow();
 			fc.setTitle("Save File as");
-			fc.setInitialFileName("other");
+			fc.setInitialFileName("template");
 			fc.getExtensionFilters().add(new ExtensionFilter("TeX Files","*.tex"));
 			File file=fc.showSaveDialog(stage);
-		
+
 			if (file!=null) {
 				fc.setInitialDirectory(file.getParentFile());
 				String pathSave=file.getPath();
 				System.out.println("Path to save is:"+pathSave);
 				alreadySaved=true;
 				System.out.println(alreadySaved);
-			
-				//TODO code to save into .tex
-				
+                controller.saveTemplateDocument(pathSave,text);
 			}
 			else {
 				System.out.println("Invalid save file");
@@ -106,66 +99,49 @@ public class Gui extends Application implements Initializable{
 			System.out.println("File exists,writing on it");
 			//TODO code save into---->.tex
 		}
-		
-		
 	}
-	
+
 	public void viewReportTemplate(){
 		boolean result=ConfirmBox.display("Warning","Opening a new template.Are you sure?");
 		if(result) {
 			alreadySaved=false;
 			letter=false;
 			article=false;
-			myText.setText(this.controller.enact());
+			myText.setText(this.controller.makeReportDocument());
 			myLabel.setText("Report");
-			//TODO edw typwnw tagmeno template
 		}
 	}
-	
+
 	public void viewLetterTemplate(){
 		boolean result=ConfirmBox.display("Warning","Opening a new template.Are you sure?");
 			if(result) {
 				alreadySaved=false;
 				letter=true;
 				article=false;
-				myText.setText("Letter");
+				myText.setText(this.controller.makeLetterDocument());
 				myLabel.setText("Letter");
-				//	TODO edw typwnw tagmeno template
 			}
 	}
-	
+
 	public void viewBookTemplate(){
 		boolean result=ConfirmBox.display("Warning","Opening a new template.Are you sure?");
 		if(result) {
 			alreadySaved=false;
 			letter=false;
 			article=false;
-			myText.setText("Book");
+			myText.setText(this.controller.makeBookDocument());
 			myLabel.setText("Book");
-			//TODO edw typwnw tagmeno template
 		}
 	}
-	
+
 	public void viewArticleTemplate(){
 		boolean result=ConfirmBox.display("Warning","Opening a new template.Are you sure?");
 		if(result) {
 			alreadySaved=false;
 			article=true;
 			letter=false;
-			myText.setText("Article");
+			myText.setText(this.controller.makeArticleDocument());
 			myLabel.setText("Article");
-			//TODO edw typwnw tagmeno template
-		}
-	}
-	
-	public void showInfo(){
-		alert.displayI("Info", "This is the gui for a LaTeX editor");
-	}
-	
-	private void closeProgram(){
-		boolean result=ConfirmBox.display("Warning","All unsaved progress will be lost.Are you sure?");
-		if(result) {
-			window.close();
 		}
 	}
 
@@ -190,7 +166,7 @@ public class Gui extends Application implements Initializable{
 			versionTracking=false;
 			saveStrategy.setVisible(false);
 			//TODO code to turn off document history
-					
+
 		}
 		else {
 			onBox.setSelected(true);
@@ -198,14 +174,14 @@ public class Gui extends Application implements Initializable{
 			saveStrategy.setVisible(true);
 		}
 	}
-	
+
 	@FXML
 	private void enableVolatileStrategy(){
 		if( volatileBox.isSelected()) {
 			stableBox.setSelected(false);
 			storageStrategy="Volatile";
 			//TODO code to turn on volatile history
-					
+
 		}
 		else {
 			stableBox.setSelected(true);
@@ -215,7 +191,7 @@ public class Gui extends Application implements Initializable{
 	@FXML
 	private void enableStableStrategy(){
 		if( stableBox.isSelected()) {
-			volatileBox.setSelected(false);	
+			volatileBox.setSelected(false);
 			storageStrategy="Stable";
 			//TODO code to turn on Stable history
 		}
@@ -224,7 +200,7 @@ public class Gui extends Application implements Initializable{
 			storageStrategy="Volatile";
 		}
 	}
-	
+
 	@FXML
 	private void openFile(){
 		FileChooser fc=new FileChooser();
@@ -236,7 +212,7 @@ public class Gui extends Application implements Initializable{
 		}
 		else {
 			System.out.println("Invalid File");
-		}	
+		}
 	}
 
 	@FXML
@@ -246,9 +222,9 @@ public class Gui extends Application implements Initializable{
 			window=(Stage)myMenuBar.getScene().getWindow();
 			window.close();
 		}
-		
+
 	}
-	
+
 	@FXML
 	private void addChapter(){
 		if ((article)||(letter)){
@@ -256,11 +232,11 @@ public class Gui extends Application implements Initializable{
 		}
 		else {
 			myText.insertText(myText.getCaretPosition(),"\\chapter{Your text goes here}");
-			
+
 		}
-		
+
 	}
-	
+
 	@FXML
 	private void addSection(){
 		if(letter) {
@@ -268,10 +244,10 @@ public class Gui extends Application implements Initializable{
 		}
 		else {
 			myText.insertText(myText.getCaretPosition(),"\\section{Your text goes here}");
-			
+
 		}
 	}
-	
+
 	@FXML
 	private void addSubsection(){
 		if (letter) {
@@ -281,7 +257,7 @@ public class Gui extends Application implements Initializable{
 			myText.insertText(myText.getCaretPosition(),"\\subsection{Your text goes here}");
 		}
 	}
-	
+
 	@FXML
 	private void addSubsubsection(){
 		if (letter) {
@@ -291,32 +267,42 @@ public class Gui extends Application implements Initializable{
 			myText.insertText(myText.getCaretPosition(),"\\subsubsection{Your text goes here}");
 		}
 	}
-	
+
 	@FXML
 	private void addItemList(){
 		myText.insertText(myText.getCaretPosition(),"\\begin{itemize} \n");
 		myText.insertText(myText.getCaretPosition(),"\\item Enter your text here \n");
 		myText.insertText(myText.getCaretPosition(),"\\end{itemize} ");
 	}
-	
+
 	@FXML
 	private void addBullet(){
 		myText.insertText(myText.getCaretPosition(),"\\item Enter your text here");
-		
+
 	}
-	
+
 	@FXML
 	private void addEnumList(){
 		myText.insertText(myText.getCaretPosition(),"\\begin{enumerate} \n");
 		myText.insertText(myText.getCaretPosition(),"\\item Enter your text here \n");
 		myText.insertText(myText.getCaretPosition(),"\\end{enumerate}");
 	}
-	
+
 	@FXML
 	private void addEnum(){
 		myText.insertText(myText.getCaretPosition(),"\\item Enter your text here ");
 	}
 
+    public void showInfo(){
+        alert.displayI("Info", "This is the gui for a LaTeX editor");
+    }
+
+    private void closeProgram(){
+        boolean result=ConfirmBox.display("Warning","All unsaved progress will be lost.Are you sure?");
+        if(result) {
+            window.close();
+        }
+    }
 	public static void main(String[] args)throws Exception{
 		Gui gui = new Gui();
 		launch(args);

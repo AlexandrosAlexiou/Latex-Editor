@@ -71,32 +71,27 @@ public class Gui extends Application implements Initializable{
 	@FXML
 	private void save()throws Exception{
 		String text=myText.getText();
-		//alert.display("You typed:", typed);
-		if (!alreadySaved) {
-				//if i haven't saved already!
-			FileChooser fc=new FileChooser();
-			Window stage=myMenuBar.getScene().getWindow();
-			fc.setTitle("Save File as");
-			fc.setInitialFileName("template");
-			fc.getExtensionFilters().add(new ExtensionFilter("TeX Files","*.tex"));
-			File file=fc.showSaveDialog(stage);
+		String pathSave;
 
-			if (file!=null) {
-				fc.setInitialDirectory(file.getParentFile());
-				String pathSave=file.getPath();
-				System.out.println("Path to save is:"+pathSave);
-				alreadySaved=true;
-				System.out.println(alreadySaved);
-                controller.saveTemplateDocument(pathSave,text);
-			}
-			else {
-				System.out.println("Invalid save file");
-			}
+		FileChooser fc=new FileChooser();
+		Window stage=myMenuBar.getScene().getWindow();
+		fc.setTitle("Save File as");
+		fc.setInitialFileName("template");
+		fc.getExtensionFilters().add(new ExtensionFilter("TeX Files","*.tex"));
+		File file=fc.showSaveDialog(stage);
+
+		if (file!=null) {
+			fc.setInitialDirectory(file.getParentFile());
+			pathSave=file.getPath();
+			System.out.println("Path to save is:"+pathSave);
+			alreadySaved=true;
+			System.out.println(alreadySaved);
+			controller.saveTemplateDocument(pathSave,text);
 		}
 		else {
-			System.out.println("File exists,writing on it");
-			//TODO code save into---->.tex
+			System.out.println("Invalid save file");
 		}
+
 	}
 
 	public void viewReportTemplate(){
@@ -105,7 +100,7 @@ public class Gui extends Application implements Initializable{
 			alreadySaved=false;
 			letter=false;
 			article=false;
-			myText.setText(this.controller.makeReportDocument());
+			myText.setText(this.controller.makeDocument("report"));
 			myLabel.setText("Report");
 		}
 	}
@@ -116,7 +111,7 @@ public class Gui extends Application implements Initializable{
 				alreadySaved=false;
 				letter=true;
 				article=false;
-				myText.setText(this.controller.makeLetterDocument());
+				myText.setText(this.controller.makeDocument("letter"));
 				myLabel.setText("Letter");
 			}
 	}
@@ -127,7 +122,7 @@ public class Gui extends Application implements Initializable{
 			alreadySaved=false;
 			letter=false;
 			article=false;
-			myText.setText(this.controller.makeBookDocument());
+			myText.setText(this.controller.makeDocument("book"));
 			myLabel.setText("Book");
 		}
 	}
@@ -138,7 +133,7 @@ public class Gui extends Application implements Initializable{
 			alreadySaved=false;
 			article=true;
 			letter=false;
-			myText.setText(this.controller.makeArticleDocument());
+			myText.setText(this.controller.makeDocument("article"));
 			myLabel.setText("Article");
 		}
 	}

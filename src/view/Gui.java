@@ -39,7 +39,7 @@ public class Gui extends Application implements Initializable{
 	@FXML private CheckMenuItem stableBox;
 	private LatexEditorController controller=new LatexEditorController();
 
-	public Gui()throws Exception{}
+	public Gui(){}
 
 	@Override
 	public void start(Stage primaryStage)throws Exception{
@@ -297,7 +297,7 @@ public class Gui extends Application implements Initializable{
             window.close();
         }
     }
-	public static void main(String[] args)throws Exception{
+	public static void main(String[] args){
 		Gui gui = new Gui();
 		launch(args);
 

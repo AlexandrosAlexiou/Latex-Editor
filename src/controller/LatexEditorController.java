@@ -8,7 +8,7 @@ public class LatexEditorController{
 
     public LatexEditorController(){}
 
-   public String makeDocument(String templateName){
+    public String makeDocument(String templateName){
         return manager.createDocument(templateName).getContents();
     }
 

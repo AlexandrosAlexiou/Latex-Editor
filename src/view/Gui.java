@@ -69,10 +69,9 @@ public class Gui extends Application implements Initializable{
 	}
 
 	@FXML
-	private void save()throws Exception{
+	private void save(){
 		String text=myText.getText();
 		String pathSave;
-
 		FileChooser fc=new FileChooser();
 		Window stage=myMenuBar.getScene().getWindow();
 		fc.setTitle("Save File as");

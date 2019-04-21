@@ -12,7 +12,7 @@ public class LatexEditorController{
         return manager.createDocument(templateName).getContents();
     }
 
-    public void saveTemplateDocument(String path,String text)throws Exception{
+    public void saveTemplateDocument(String path,String text){
         manager.saveDocumentToDisk(path,text);
     }
 

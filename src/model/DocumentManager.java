@@ -13,7 +13,7 @@ public class DocumentManager{
         dynamicallyLoadTemplate("article","tex templates/article-template.tex");
     }
 
-    public void dynamicallyLoadTemplate(String templateType,String templateFileName) {
+    private void dynamicallyLoadTemplate(String templateType,String templateFileName) {
         try {
             map.put(templateType,new Document(reader.readFile(templateFileName),"id0"));
         } catch (Exception e) {

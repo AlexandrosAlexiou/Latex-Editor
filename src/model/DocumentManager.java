@@ -15,7 +15,7 @@ public class DocumentManager{
 
     public void dynamicallyLoadTemplate(String templateType,String templateFileName) {
         try {
-            map.put(templateType,new Document(reader.readFile("tex templates/letter-template.tex"),"id0"));
+            map.put(templateType,new Document(reader.readFile(templateFileName),"id0"));
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,37 +1,25 @@
 package model;
 
+import java.util.HashMap;
+
 public class DocumentManager{
-    private Document letter;
-    private Document book;
-    private Document report;
-    private Document article;
-    private Document emptyDoc;
     private FileReader reader = new FileReader();
+    HashMap <String, Document> map = new HashMap <String, Document>();
 
     public DocumentManager() throws Exception{
-        this.letter=new Document(reader.readFile("tex templates/letter-template.tex"),"id0");
-        this.book=new Document(reader.readFile("tex templates/book-template.tex"),"id0");
-        this.report=new Document(reader.readFile("tex templates/report-template.tex"),"id0");
-        this.article=new Document(reader.readFile("tex templates/article-template.tex"),"id0");
-        this.emptyDoc=new Document();
+        map.put("letter",new Document(reader.readFile("tex templates/letter-template.tex"),"id0"));
+        map.put("book",new Document(reader.readFile("tex templates/book-template.tex"),"id0"));
+        map.put("report",new Document(reader.readFile("tex templates/report-template.tex"),"id0"));
+        map.put("article",new Document(reader.readFile("tex templates/article-template.tex"),"id0"));
     }
 
     public Document createDocument(String template){
-        if(template.equals("book")){
-           return this.book.cloneDeep();
-        }
-        if(template.equals("report")){
-            return this.report.cloneDeep();
-        }
-        if(template.equals("letter")){
-            return this.letter.cloneDeep();
-        }
-        if(template.equals("article")){
-            return this.article.cloneDeep();
-        }
-        return this.emptyDoc;
+        Document DocumentTemplate = map.get(template);
+        // A clone of the Prototype object is created and returned to the Client
+        return DocumentTemplate.cloneDeep();
     }
-    public void saveDocumentToDisk(String path,String typed)throws Exception{
+
+    public void saveDocumentToDisk(String path,String typed){
         FileWriter writer = new FileWriter(path);
         writer.writetofile(typed);
     }

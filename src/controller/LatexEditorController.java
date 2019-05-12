@@ -1,22 +1,23 @@
 package controller;
 
-import model.DocumentManager;
+
+import java.util.HashMap;
 
 public class LatexEditorController{
 
-    private DocumentManager manager =new DocumentManager();
+    private CommandsFactory factory = new CommandsFactory();
+    private HashMap<String, Command> commands = new HashMap<String, Command>();
 
-    public LatexEditorController(){}
-
-    public String makeDocument(String templateName){
-        return manager.createDocument(templateName).getContents();
+    public LatexEditorController(){
+        commands.put("CreateBook",factory.createCommand("CreateBook"));
+        commands.put("CreateLetter",factory.createCommand("CreateLetter"));
+        commands.put("CreateArticle",factory.createCommand("CreateArticle"));
+        commands.put("CreateReport",factory.createCommand("CreateReport"));
+        commands.put("AddChapter",factory.createCommand("AddChapter"));
     }
 
-    public void saveTemplateDocument(String path,String text){
-        manager.saveDocumentToDisk(path,text);
+    public String enact(String name){
+        return commands.get(name).execute();
     }
 
-    public String openFile(String path)throws Exception{
-        return manager.openDocumentFromDisk(path);
-    }
 }

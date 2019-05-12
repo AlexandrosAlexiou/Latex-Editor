@@ -5,14 +5,15 @@ import java.nio.file.*;;
 
 
 public class FileWriter {
-    private  String savepath;
+    private  String savePath;
 
-    public FileWriter(String savepath){
-        this.savepath=savepath;
+    public FileWriter(String savePath){
+        this.savePath=savePath;
     }
+
     public void writetofile(String documentContents){
         try {
-            Files.write(Paths.get(this.savepath), documentContents.getBytes());
+            Files.write(Paths.get(this.savePath), documentContents.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }

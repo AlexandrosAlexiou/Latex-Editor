@@ -85,7 +85,7 @@ public class Gui extends Application implements Initializable{
 			System.out.println("Path to save is:"+pathSave);
 			alreadySaved=true;
 			System.out.println(alreadySaved);
-			controller.saveTemplateDocument(pathSave,text);
+			//controller.saveTemplateDocument(pathSave,text);
 		}
 		else {
 			System.out.println("Invalid save file");
@@ -99,7 +99,7 @@ public class Gui extends Application implements Initializable{
 			alreadySaved=false;
 			letter=false;
 			article=false;
-			myText.setText(this.controller.makeDocument("report"));
+			myText.setText(this.controller.enact("CreateReport"));
 			myLabel.setText("Report");
 		}
 	}
@@ -110,7 +110,7 @@ public class Gui extends Application implements Initializable{
 				alreadySaved=false;
 				letter=true;
 				article=false;
-				myText.setText(this.controller.makeDocument("letter"));
+				myText.setText(this.controller.enact("CreateLetter"));
 				myLabel.setText("Letter");
 			}
 	}
@@ -121,7 +121,7 @@ public class Gui extends Application implements Initializable{
 			alreadySaved=false;
 			letter=false;
 			article=false;
-			myText.setText(this.controller.makeDocument("book"));
+			myText.setText(this.controller.enact("CreateBook"));
 			myLabel.setText("Book");
 		}
 	}
@@ -132,7 +132,7 @@ public class Gui extends Application implements Initializable{
 			alreadySaved=false;
 			article=true;
 			letter=false;
-			myText.setText(this.controller.makeDocument("article"));
+			myText.setText(this.controller.enact("CreateArticle"));
 			myLabel.setText("Article");
 		}
 	}
@@ -194,7 +194,7 @@ public class Gui extends Application implements Initializable{
 	}
 
 	@FXML
-	private void openFile()throws Exception{
+	private void openFile(){
         String path;
 		FileChooser fc=new FileChooser();
 		fc.getExtensionFilters().add(new ExtensionFilter("TeX Files","*.tex"));
@@ -202,7 +202,7 @@ public class Gui extends Application implements Initializable{
 		if (selected!=null) {
 			path=selected.getAbsolutePath();
 			System.out.println("This is the path:"+path);
-			myText.setText(controller.openFile(path));
+			myText.setText(controller.enact("Load"));
 		}
 		else {
 			System.out.println("Invalid File");
@@ -225,8 +225,7 @@ public class Gui extends Application implements Initializable{
 			alert.display("Warning", "Chapter not applicable");
 		}
 		else {
-			myText.insertText(myText.getCaretPosition(),"\\chapter{Your text goes here}");
-
+			myText.insertText(myText.getCaretPosition(),controller.enact("AddChapter"));
 		}
 
 	}

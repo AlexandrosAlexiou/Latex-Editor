@@ -6,16 +6,10 @@ public class CommandsFactory {
     }
 
     public Command createCommand(String command) {
-        if (command.equals("CreateBook")) {
-            return new CreateBookCommand();
-        } else if (command.equals("CreateLetter")) {
-            return new CreateLetterCommand();
-        } else if (command.equals("CreateArticle")) {
-            return new CreateArticleCommand();
-        }else if (command.equals("CreateReport")) {
-            return new CreateReportCommand();
-        }else if (command.equals(("AddChapter"))){
-            return new AddChapterCommand();
+        if (command.equals("CreateDocumentCommand")) {
+            return new CreateDocumentCommand();
+        }else if (command.equals(("AddLatexCommand"))){
+            return new AddLatexCommand();
         }else{
             throw new IllegalArgumentException();
         }

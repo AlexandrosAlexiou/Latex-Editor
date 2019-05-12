@@ -6,6 +6,6 @@ public interface Command {
 
     DocumentManager manager =new DocumentManager();
 
-    String execute();
+    String execute(String specifyWork);
 
 }

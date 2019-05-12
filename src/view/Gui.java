@@ -99,7 +99,7 @@ public class Gui extends Application implements Initializable{
 			alreadySaved=false;
 			letter=false;
 			article=false;
-			myText.setText(this.controller.enact("CreateReport"));
+			myText.setText(this.controller.enact("CreateDocumentCommand","report"));
 			myLabel.setText("Report");
 		}
 	}
@@ -110,7 +110,7 @@ public class Gui extends Application implements Initializable{
 				alreadySaved=false;
 				letter=true;
 				article=false;
-				myText.setText(this.controller.enact("CreateLetter"));
+				myText.setText(this.controller.enact("CreateDocumentCommand","letter"));
 				myLabel.setText("Letter");
 			}
 	}
@@ -121,7 +121,7 @@ public class Gui extends Application implements Initializable{
 			alreadySaved=false;
 			letter=false;
 			article=false;
-			myText.setText(this.controller.enact("CreateBook"));
+			myText.setText(this.controller.enact("CreateDocumentCommand","book"));
 			myLabel.setText("Book");
 		}
 	}
@@ -132,7 +132,7 @@ public class Gui extends Application implements Initializable{
 			alreadySaved=false;
 			article=true;
 			letter=false;
-			myText.setText(this.controller.enact("CreateArticle"));
+			myText.setText(this.controller.enact("CreateDocumentCommand","article"));
 			myLabel.setText("Article");
 		}
 	}
@@ -202,7 +202,7 @@ public class Gui extends Application implements Initializable{
 		if (selected!=null) {
 			path=selected.getAbsolutePath();
 			System.out.println("This is the path:"+path);
-			myText.setText(controller.enact("Load"));
+			//myText.setText(controller.enact("Load"));
 		}
 		else {
 			System.out.println("Invalid File");
@@ -222,21 +222,20 @@ public class Gui extends Application implements Initializable{
 	@FXML
 	private void addChapter(){
 		if ((article)||(letter)){
-			alert.display("Warning", "Chapter not applicable");
+			alert.display("Warning", "Chapter not applicable in this template format");
 		}
 		else {
-			myText.insertText(myText.getCaretPosition(),controller.enact("AddChapter"));
+			myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddChapter"));
 		}
-
 	}
 
 	@FXML
 	private void addSection(){
 		if(letter) {
-			alert.display("Warning", "Section not applicable");
+			alert.display("Warning", "Section not applicable in this template format");
 		}
 		else {
-			myText.insertText(myText.getCaretPosition(),"\\section{Your text goes here}");
+			myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddSection"));
 
 		}
 	}
@@ -244,46 +243,44 @@ public class Gui extends Application implements Initializable{
 	@FXML
 	private void addSubsection(){
 		if (letter) {
-			alert.display("Warning", "Subsection not applicable");
+			alert.display("Warning", "Subsection not applicable in this template format");
 		}
 		else {
-			myText.insertText(myText.getCaretPosition(),"\\subsection{Your text goes here}");
+			myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddSubSection"));
 		}
 	}
 
 	@FXML
 	private void addSubsubsection(){
 		if (letter) {
-			alert.display("Warning", "Subsubsection not applicable");
+			alert.display("Warning", "Subsubsection not applicable in this template format");
 		}
 		else {
-			myText.insertText(myText.getCaretPosition(),"\\subsubsection{Your text goes here}");
+			myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddSubSubSection"));
 		}
 	}
 
 	@FXML
 	private void addItemList(){
-		myText.insertText(myText.getCaretPosition(),"\\begin{itemize} \n");
-		myText.insertText(myText.getCaretPosition(),"\\item Enter your text here \n");
-		myText.insertText(myText.getCaretPosition(),"\\end{itemize} ");
+		myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddItemList"));
+	}
+
+
+	@FXML
+	private void addEnumList(){
+		myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddEnumList"));
+
 	}
 
 	@FXML
 	private void addBullet(){
-		myText.insertText(myText.getCaretPosition(),"\\item Enter your text here");
+		myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddItem"));
 
-	}
-
-	@FXML
-	private void addEnumList(){
-		myText.insertText(myText.getCaretPosition(),"\\begin{enumerate} \n");
-		myText.insertText(myText.getCaretPosition(),"\\item Enter your text here \n");
-		myText.insertText(myText.getCaretPosition(),"\\end{enumerate}");
 	}
 
 	@FXML
 	private void addEnum(){
-		myText.insertText(myText.getCaretPosition(),"\\item Enter your text here ");
+		myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddItem"));
 	}
 
     public void showInfo(){

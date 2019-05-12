@@ -3,7 +3,6 @@ package model;
 import java.util.HashMap;
 
 public class DocumentManager{
-
     private FileReader reader = new FileReader();
     private HashMap <String, Document> map = new HashMap <String, Document>();
 
@@ -20,6 +19,7 @@ public class DocumentManager{
             e.printStackTrace();
         }
     }
+
     public Document createDocument(String template){
         Document DocumentTemplate = map.get(template);
         return DocumentTemplate.cloneDeep();

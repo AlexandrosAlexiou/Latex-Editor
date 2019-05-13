@@ -75,7 +75,7 @@ public class Gui extends Application implements Initializable{
 		FileChooser fc=new FileChooser();
 		Window stage=myMenuBar.getScene().getWindow();
 		fc.setTitle("Save File as");
-		fc.setInitialFileName("template");
+		fc.setInitialFileName("new");
 		fc.getExtensionFilters().add(new ExtensionFilter("TeX Files","*.tex"));
 		File file=fc.showSaveDialog(stage);
 
@@ -286,6 +286,25 @@ public class Gui extends Application implements Initializable{
 
     public void showInfo(){
         alert.displayI("Info", "This is the gui for a LaTeX editor");
+    }
+    @FXML
+    private void addSimpleTable() {
+    	//TODO
+    }
+    @FXML
+    private void addGraphicsTable() {
+    	//TODO
+    	
+    }
+    @FXML
+    private void rollBack() {
+    	//TODO
+    	
+    }
+    @FXML
+    private void commitChanges() {
+    	//TODO
+    	
     }
 
     private void closeProgram(){

@@ -289,11 +289,11 @@ public class Gui extends Application implements Initializable{
     }
     @FXML
     private void addSimpleTable() {
-    	//TODO
+		myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddTable"));
     }
     @FXML
     private void addGraphicsTable() {
-    	//TODO
+		myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddGTable"));
     	
     }
     @FXML

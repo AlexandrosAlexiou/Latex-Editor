@@ -20,6 +20,10 @@ public class DocumentManager{
         }
     }
 
+    public FileReader getReader() {
+        return reader;
+    }
+
     public Document createDocument(String template){
         Document DocumentTemplate = map.get(template);
         return DocumentTemplate.cloneDeep();

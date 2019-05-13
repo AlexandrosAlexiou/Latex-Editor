@@ -85,7 +85,8 @@ public class Gui extends Application implements Initializable{
 			System.out.println("Path to save is:"+pathSave);
 			alreadySaved=true;
 			System.out.println(alreadySaved);
-			//controller.saveTemplateDocument(pathSave,text);
+			this.controller.setLastSaveLocation(pathSave);
+			this.controller.enact("SaveDocumentCommand",text);
 		}
 		else {
 			System.out.println("Invalid save file");
@@ -202,7 +203,7 @@ public class Gui extends Application implements Initializable{
 		if (selected!=null) {
 			path=selected.getAbsolutePath();
 			System.out.println("This is the path:"+path);
-			//myText.setText(controller.enact("Load"));
+			myText.setText(controller.enact("LoadDocumentCommand",path));
 		}
 		else {
 			System.out.println("Invalid File");

@@ -10,6 +10,10 @@ public class CommandsFactory {
             return new CreateDocumentCommand();
         }else if (command.equals(("AddLatexCommand"))){
             return new AddLatexCommand();
+        }else if(command.equals("SaveDocumentCommand")) {
+            return new SaveDocumentCommand();
+        }else if(command.equals("LoadDocumentCommand")){
+            return new LoadDocumentCommand();
         }else{
             throw new IllegalArgumentException();
         }

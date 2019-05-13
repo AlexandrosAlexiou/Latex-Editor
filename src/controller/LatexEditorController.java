@@ -28,7 +28,7 @@ public class LatexEditorController{
         if(CommandName.equals("SaveDocumentCommand")){
             commands.get(CommandName).manager.getWriter().setPath(lastSaveLocation);
         }
-        if(CommandName.equals("SaveDocumentCommand")){
+        if(CommandName.equals("SaveLoadCommand")){
             commands.get(CommandName).manager.getWriter().setPath(lastLoadLocation);
         }
 

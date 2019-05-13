@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class DocumentManager{
     private FileReader reader = new FileReader();
+    private FileWriter writer = new FileWriter();
     private HashMap <String, Document> map = new HashMap <String, Document>();
 
     public DocumentManager(){
@@ -24,17 +25,13 @@ public class DocumentManager{
         return reader;
     }
 
+
+    public FileWriter getWriter() {
+        return writer;
+    }
+
     public Document createDocument(String template){
         Document DocumentTemplate = map.get(template);
         return DocumentTemplate.cloneDeep();
-    }
-
-    public void saveDocumentToDisk(String path,String typed){
-        FileWriter writer = new FileWriter(path);
-        writer.writetofile(typed);
-    }
-
-    public String openDocumentFromDisk(String path)throws Exception{
-        return reader.readFile(path);
     }
 }

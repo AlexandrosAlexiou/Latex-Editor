@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 public class LatexEditorController{
     private String lastSaveLocation= null;
+    private String lastLoadLocation= null;
     private CommandsFactory factory = new CommandsFactory();
     private HashMap<String, Command> commands = new HashMap<String, Command>();
 
@@ -19,9 +20,19 @@ public class LatexEditorController{
         this.lastSaveLocation = lastSaveLocation;
     }
 
-    public String enact(String CommandName, String Action){
+    public void setLastLoadLocation(String lastLoadLocation) {
+        this.lastLoadLocation = lastLoadLocation;
+    }
 
-        return commands.get(CommandName).execute(Action,lastSaveLocation);
+    public String enact(String CommandName, String Action){
+        if(CommandName.equals("SaveDocumentCommand")){
+            commands.get(CommandName).manager.getWriter().setPath(lastSaveLocation);
+        }
+        if(CommandName.equals("SaveDocumentCommand")){
+            commands.get(CommandName).manager.getWriter().setPath(lastLoadLocation);
+        }
+
+        return commands.get(CommandName).execute(Action);
     }
 
 }

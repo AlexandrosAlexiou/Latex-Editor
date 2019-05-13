@@ -203,6 +203,7 @@ public class Gui extends Application implements Initializable{
 		if (selected!=null) {
 			path=selected.getAbsolutePath();
 			System.out.println("This is the path:"+path);
+			this.controller.setLastLoadLocation(path);
 			myText.setText(controller.enact("LoadDocumentCommand",path));
 		}
 		else {

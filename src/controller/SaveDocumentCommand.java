@@ -8,10 +8,8 @@ public class SaveDocumentCommand implements Command {
 
 
     @Override
-    public  String execute(String typed, String path){
-
-        FileWriter writer = new FileWriter(path);
-        writer.writetofile(typed);
+    public  String execute(String typed){
+        manager.getWriter().writetofile(typed);
 
         return "Save Successful";
     }

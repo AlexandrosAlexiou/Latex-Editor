@@ -6,7 +6,7 @@ public class LoadDocumentCommand implements Command {
 
     public LoadDocumentCommand(){}
 
-    public String execute(String path,String lal){
+    public String execute(String path){
         String DocumentContents=null;
         try{
             DocumentContents=manager.getReader().readFile(path);

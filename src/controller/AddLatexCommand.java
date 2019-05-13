@@ -33,7 +33,7 @@ public class AddLatexCommand implements Command{
     }
 
     @Override
-    public String execute(String CommandName , String dummy){
+    public String execute(String CommandName){
         return LatexCommandsMap.get(CommandName);
     }
 }

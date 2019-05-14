@@ -304,7 +304,8 @@ public class Gui extends Application implements Initializable{
     }
     @FXML
     private void commitChanges() {
-    	//TODO
+        String text=myText.getText();
+    	this.controller.enact("CreateDocumentVersionCommand",text);
     	
     }
 

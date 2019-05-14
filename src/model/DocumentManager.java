@@ -3,6 +3,9 @@ package model;
 import java.util.HashMap;
 
 public class DocumentManager{
+    private boolean Versioning;
+    private VersionsStrategy Strategy;
+    private Document currentDocument;
     private FileReader reader = new FileReader();
     private FileWriter writer = new FileWriter();
     private HashMap <String, Document> map = new HashMap <String, Document>();
@@ -25,11 +28,13 @@ public class DocumentManager{
         return reader;
     }
 
-
     public FileWriter getWriter() {
         return writer;
     }
 
+    public void setVersioning(boolean Versioning){
+        this.Versioning = Versioning;
+    }
     public Document createDocument(String template){
         Document DocumentTemplate = map.get(template);
         return DocumentTemplate.cloneDeep();

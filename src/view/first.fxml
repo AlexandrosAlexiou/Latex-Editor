@@ -65,17 +65,16 @@
                 </Menu>
                   <Menu mnemonicParsing="false" text="Settings">
                      <items>
-                        <Menu mnemonicParsing="false" text="Version Tracking On/Off">
-                          <items>
-                              <CheckMenuItem fx:id="onBox" mnemonicParsing="false" onAction="#enableVersionTracking" text="On" />
-                              <CheckMenuItem fx:id="offBox" mnemonicParsing="false" onAction="#disableVersionTracking" text="Off" />
-                          </items>
-                        </Menu>
+                        <Menu mnemonicParsing="false" text="Version Tracking ">
+                           <items>
+                              <MenuItem fx:id="onBox" mnemonicParsing="false" onAction="#enableVersionTracking" text="Enable" />
+                              <MenuItem fx:id="offBox" mnemonicParsing="false" onAction="#disableVersionTracking" text="Disable" />
+                           </items></Menu>
                         <Menu fx:id="saveStrategy" mnemonicParsing="false" text="Save Strategy">
-                          <items>
-                              <CheckMenuItem fx:id="volatileBox" mnemonicParsing="false" onAction="#enableVolatileStrategy" text="Volatile" />
-                              <CheckMenuItem fx:id="stableBox" mnemonicParsing="false" onAction="#enableStableStrategy" text="Stable" />
-                          </items>
+                           <items>
+                              <MenuItem fx:id="stableBox" mnemonicParsing="false" onAction="#enableStableStrategy" text="Enable Stable Versioning" />
+                              <MenuItem fx:id="volatileBox" mnemonicParsing="false" onAction="#enableVolatileStrategy" text="Enable Volatile Versioning" />
+                           </items>
                         </Menu>
                      </items>
                   </Menu>

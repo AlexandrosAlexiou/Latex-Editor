@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
@@ -33,10 +34,10 @@ public class Gui extends Application implements Initializable{
 	@FXML private Text myLabel;
 	@FXML private Menu saveStrategy;
 	@FXML private TextArea myText;
-	@FXML private CheckMenuItem onBox;
-	@FXML private CheckMenuItem offBox;
-	@FXML private CheckMenuItem volatileBox;
-	@FXML private CheckMenuItem stableBox;
+	@FXML private MenuItem onBox;
+	@FXML private MenuItem offBox;
+	@FXML private MenuItem volatileBox;
+	@FXML private MenuItem stableBox;
 	private LatexEditorController controller=new LatexEditorController();
 
 	public Gui(){}
@@ -63,8 +64,10 @@ public class Gui extends Application implements Initializable{
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1){
-		onBox.setSelected(true);
-		volatileBox.setSelected(true);
+		onBox.setVisible(false);
+		saveStrategy.setVisible(true);
+		volatileBox.setVisible(false);
+		
 
 	}
 
@@ -140,58 +143,31 @@ public class Gui extends Application implements Initializable{
 
 	@FXML
 	private void enableVersionTracking(){
-		if( onBox.isSelected()) {
-			offBox.setSelected(false);
-            versionTracking=true;
-            saveStrategy.setVisible(true);
-			//TODO code to turn on document history
-		}
-		else {
-			offBox.setSelected(true);
-			versionTracking=false;
-			saveStrategy.setVisible(false);
-		}
+		offBox.setVisible(true);
+		onBox.setVisible(false);
+		saveStrategy.setVisible(true);
+		//TODO
+		
 	}
 	@FXML
 	private void disableVersionTracking(){
-		if( offBox.isSelected()) {
-			onBox.setSelected(false);
-			versionTracking=false;
-			saveStrategy.setVisible(false);
-			//TODO code to turn off document history
-
-		}
-		else {
-			onBox.setSelected(true);
-			versionTracking=true;
-			saveStrategy.setVisible(true);
-		}
+		onBox.setVisible(true);
+		offBox.setVisible(false);
+		saveStrategy.setVisible(false);
+		//TODO
 	}
 
 	@FXML
 	private void enableVolatileStrategy(){
-		if( volatileBox.isSelected()) {
-			stableBox.setSelected(false);
-			storageStrategy="Volatile";
-			//TODO code to turn on volatile history
-
-		}
-		else {
-			stableBox.setSelected(true);
-			storageStrategy="Stable";
-		}
+		volatileBox.setVisible(false);
+		stableBox.setVisible(true);
+		//TODO
 	}
 	@FXML
 	private void enableStableStrategy(){
-		if( stableBox.isSelected()) {
-			volatileBox.setSelected(false);
-			storageStrategy="Stable";
-			//TODO code to turn on Stable history
-		}
-		else{
-			volatileBox.setSelected(true);
-			storageStrategy="Volatile";
-		}
+		stableBox.setVisible(false);
+		volatileBox.setVisible(true);
+		//TODO
 	}
 
 	@FXML

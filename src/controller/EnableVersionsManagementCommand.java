@@ -6,7 +6,7 @@ public class EnableVersionsManagementCommand implements Command {
 
     @Override
     public String execute(String specifyWork) {
-        manager.setVersioning(true);
+        manager.enableVersioning();
         return null;
     }
 }

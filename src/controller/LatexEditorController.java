@@ -1,12 +1,8 @@
 package controller;
 
-
-import model.VersionsStrategy;
-
 import java.util.HashMap;
 
 public class LatexEditorController{
-    private VersionsStrategy Strategy;
     private String lastSaveLocation= null;
     private String lastLoadLocation= null;
     private CommandsFactory factory = new CommandsFactory();
@@ -32,19 +28,12 @@ public class LatexEditorController{
         this.lastLoadLocation = lastLoadLocation;
     }
 
-    public void setStrategy(VersionsStrategy strategy) {
-        Strategy = strategy;
-    }
-
     public String enact(String CommandName, String Action){
-        if(CommandName.equals("SaveDocumentCommand")){
-            commands.get(CommandName).manager.getWriter().setPath(lastSaveLocation);
-        }
-        if(CommandName.equals("SaveLoadCommand")){
-            commands.get(CommandName).manager.getWriter().setPath(lastLoadLocation);
-        }
+
+        if(CommandName.equals("SaveDocumentCommand")){ commands.get(CommandName).manager.getWriter().setPath(lastSaveLocation); }
+
+        if(CommandName.equals("LoadDocumentCommand")){ commands.get(CommandName).manager.getReader().setPath(lastLoadLocation); }
 
         return commands.get(CommandName).execute(Action);
     }
-
 }

@@ -1,7 +1,5 @@
 package controller;
 
-import model.FileReader;
-
 public class LoadDocumentCommand implements Command {
 
     public LoadDocumentCommand(){}
@@ -9,10 +7,12 @@ public class LoadDocumentCommand implements Command {
     public String execute(String path){
         String DocumentContents=null;
         try{
-            DocumentContents=manager.getReader().readFile(path);
+            manager.getReader().setPath(path);
+            DocumentContents=manager.getReader().readFile();
         }catch (Exception e) {
             e.printStackTrace();
         }
+        manager.setCurrentDocument(manager.loadDocument(DocumentContents,"id0",path));
         return DocumentContents;
     }
 }

@@ -218,7 +218,6 @@ public class Gui extends Application implements Initializable{
 			window=(Stage)myMenuBar.getScene().getWindow();
 			window.close();
 		}
-
 	}
 
 	@FXML
@@ -288,6 +287,7 @@ public class Gui extends Application implements Initializable{
     public void showInfo(){
         alert.displayI("Info", "This is the gui for a LaTeX editor");
     }
+
     @FXML
     private void addSimpleTable() {
 		myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddTable"));
@@ -299,14 +299,12 @@ public class Gui extends Application implements Initializable{
     }
     @FXML
     private void rollBack() {
-    	//TODO
-    	
+    	myText.setText(controller.enact("RollbackToPreviousVersionCommand",null));
     }
     @FXML
     private void commitChanges() {
         String text=myText.getText();
     	this.controller.enact("CreateDocumentVersionCommand",text);
-    	
     }
 
     private void closeProgram(){
@@ -318,7 +316,6 @@ public class Gui extends Application implements Initializable{
 	public static void main(String[] args){
 		Gui gui = new Gui();
 		launch(args);
-
 	}
 }
 

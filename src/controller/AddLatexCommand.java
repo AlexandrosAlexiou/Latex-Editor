@@ -1,10 +1,7 @@
 package controller;
 
 import model.FileReader;
-
 import java.util.HashMap;
-import java.io.BufferedReader;
-
 
 public class AddLatexCommand implements Command{
 
@@ -25,11 +22,11 @@ public class AddLatexCommand implements Command{
     private void dynamicallyLoadLatexCommand(String CommandName,String CommandFileName){
         FileReader reader = new FileReader();
         try {
-            LatexCommandsMap.put(CommandName, reader.readFile(CommandFileName));
+            reader.setPath(CommandFileName);
+            LatexCommandsMap.put(CommandName, reader.readFile());
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @Override

@@ -5,7 +5,9 @@ public class RollbackToPreviousVersionCommand implements Command{
     public RollbackToPreviousVersionCommand(){}
 
     @Override
-    public String execute(String specifyWork) {
-        return null;
+    public String execute(String specifyWork){
+
+        manager.changeToPreviousVersion(manager.getStrategy().getVersion());
+        return manager.getCurrentDocument().getContents();
     }
 }

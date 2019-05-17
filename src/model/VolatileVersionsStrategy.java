@@ -1,6 +1,10 @@
 package model;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class VolatileVersionsStrategy implements VersionsStrategy {
 
@@ -14,16 +18,26 @@ public class VolatileVersionsStrategy implements VersionsStrategy {
 
     @Override
     public void putVersion(Document newVersion){
-        System.out.println(newVersion.getContents());
         versionsHistory.add(newVersion);
     }
 
     @Override
-    public Document getVersion(){
+    public String getVersion(){
         if(!versionsHistory.isEmpty()) {
-            return versionsHistory.remove(versionsHistory.size() - 1);
+            return versionsHistory.remove(versionsHistory.size() - 1).getContents();
         }
-        return new Document();
+      return null;
     }
 
+    @Override
+    public void setEntireHistory(ArrayList<Document> versionsHistory){
+        this.versionsHistory=versionsHistory;
+
+
+    }
+
+    @Override
+    public ArrayList<Document> getEntireHistory(){
+        return this.versionsHistory;
+    }
 }

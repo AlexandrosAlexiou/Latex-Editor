@@ -12,7 +12,7 @@ public class LoadDocumentCommand implements Command {
         }catch (Exception e) {
             e.printStackTrace();
         }
-        manager.setCurrentDocument(manager.loadDocument(DocumentContents,"id0",path));
+        manager.setCurrentDocument(manager.loadDocument(DocumentContents,0,path));
         return DocumentContents;
     }
 }

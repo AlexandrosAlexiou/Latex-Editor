@@ -1,9 +1,14 @@
 package model;
 
+import java.util.ArrayList;
+
 public interface VersionsStrategy {
 
     void putVersion(Document newVersion);
 
-    Document getVersion();
+    String getVersion();
+
+    void setEntireHistory(ArrayList<Document> versionsHistory);
+    ArrayList<Document> getEntireHistory();
 
 }

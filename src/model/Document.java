@@ -3,18 +3,18 @@ package model;
 public class Document{
 
     private String contents;
-    private String versionID;
+    private int versionID;
     private String locationOnDisk;
 
     public Document(){}
 
-    public Document(String contents, String versionID,String locationOnDisk){
+    public Document(String contents, int versionID,String locationOnDisk){
         this.contents=contents;
         this.versionID=versionID;
         this.locationOnDisk=locationOnDisk;
     }
 
-    //Deep copy constructor
+    //Deep-copy constructor
     public Document(Document doc){
        this.setContents(doc.getContents());
        this.setVersionID(doc.getVersionID());
@@ -25,7 +25,7 @@ public class Document{
         this.contents=contents;
     }
 
-    public void setVersionID(String versionID) {
+    public void setVersionID(int versionID) {
         this.versionID = versionID;
     }
 
@@ -41,7 +41,7 @@ public class Document{
         return locationOnDisk;
     }
 
-    public String getVersionID(){
+    public int getVersionID(){
         return this.versionID;
     }
 

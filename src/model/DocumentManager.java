@@ -6,7 +6,7 @@ public class DocumentManager{
     private boolean Versioning;
     private VersionsStrategy Strategy;
     private VersionsStrategyFactory strategyFactory = new VersionsStrategyFactory();
-    private Document currentDocument;
+    private Document currentDocument= new Document("",0,null);
     private FileReader reader = new FileReader();
     private FileWriter writer = new FileWriter();
     private HashMap <String, Document> map = new HashMap <String, Document>();
@@ -21,7 +21,7 @@ public class DocumentManager{
     private void dynamicallyLoadTemplate(String templateType,String templateFileName) {
         try {
             this.reader.setPath(templateFileName);
-            map.put(templateType,new Document(reader.readFile(),"id0",null));
+            map.put(templateType,new Document(reader.readFile(),0,null));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,8 +45,6 @@ public class DocumentManager{
         this.Versioning = false;
     }
 
-    public void setStrategy(VersionsStrategy strategy) {  }
-
     public VersionsStrategy getStrategy(){
         return this.Strategy;
     }
@@ -66,23 +64,33 @@ public class DocumentManager{
         return deepCopy;
     }
 
-    public Document loadDocument(String contents,String versionId,String locationOnDisk){
+    public Document loadDocument(String contents,int versionId,String locationOnDisk){
         Document newDocument = new Document(contents,versionId,locationOnDisk);
         setCurrentDocument(newDocument);
         return newDocument;
     }
 
     public Document createVersion(String contents){
+
         Document newVersion = new Document(this.currentDocument);
+        this.getCurrentDocument().setVersionID(this.getCurrentDocument().getVersionID() + 1);
         newVersion.setContents(contents);
+        newVersion.setVersionID(newVersion.getVersionID() + 1);
+        newVersion.setLocationOnDisk(this.currentDocument.getLocationOnDisk());
         return newVersion;
     }
 
-    public void changeToPreviousVersion(Document previousVersion){
+    public void changeToPreviousVersion(String previousVersion){
         if(previousVersion!=null){
-            setCurrentDocument(previousVersion);
+           this.currentDocument.setContents(previousVersion);
+           this.currentDocument.setVersionID(this.currentDocument.getVersionID()-1);
         }
+    }
 
+    public void changeStrategy(String StrategyType){
+        VersionsStrategy newStrategy = this.strategyFactory.createStrategy(StrategyType);
+        newStrategy.setEntireHistory(this.Strategy.getEntireHistory());
+        this.Strategy=newStrategy;
     }
 
 }

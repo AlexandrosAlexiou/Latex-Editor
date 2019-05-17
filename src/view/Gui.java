@@ -146,7 +146,7 @@ public class Gui extends Application implements Initializable{
 		offBox.setVisible(true);
 		onBox.setVisible(false);
 		saveStrategy.setVisible(true);
-		//TODO
+		this.controller.enact("EnableVersionsManagementCommand","enable");
 		
 	}
 	@FXML
@@ -154,20 +154,20 @@ public class Gui extends Application implements Initializable{
 		onBox.setVisible(true);
 		offBox.setVisible(false);
 		saveStrategy.setVisible(false);
-		//TODO
+		this.controller.enact("DisableVersionsManagementCommand","disable");
 	}
 
 	@FXML
 	private void enableVolatileStrategy(){
 		volatileBox.setVisible(false);
 		stableBox.setVisible(true);
-		//TODO
+		this.controller.enact("ChangeVersionsStrategyCommand","Volatile");
 	}
 	@FXML
 	private void enableStableStrategy(){
 		stableBox.setVisible(false);
 		volatileBox.setVisible(true);
-		//TODO
+		this.controller.enact("ChangeVersionsStrategyCommand","Stable");
 	}
 
 	@FXML
@@ -277,6 +277,7 @@ public class Gui extends Application implements Initializable{
     private void rollBack() {
     	myText.setText(controller.enact("RollbackToPreviousVersionCommand",null));
     }
+
     @FXML
     private void commitChanges() {
         String text=myText.getText();

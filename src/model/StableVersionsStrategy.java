@@ -27,13 +27,13 @@ public class StableVersionsStrategy implements VersionsStrategy {
 
     @Override
     public String getVersion(){
-        if(maxVersionNumber>=1) {
+        if(!this.versionsHistory.isEmpty()) {
             String contents = null;
             try {
                 //System.out.println(maxVersionNumber);
-                contents = new String(Files.readAllBytes(Paths.get(this.versionsPath + (maxVersionNumber) + ".tex")));
+                contents = new String(Files.readAllBytes(Paths.get(this.versionsPath + (this.versionsHistory.size()) + ".tex")));
                 versionsHistory.remove(maxVersionNumber);
-                this.maxVersionNumber -= 1;
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -45,6 +45,7 @@ public class StableVersionsStrategy implements VersionsStrategy {
 
     @Override
     public void setEntireHistory(ArrayList<Document> versionsHistory){
+        this.versionsHistory=versionsHistory;
         Iterator<Document> iterator =versionsHistory.iterator();
         while (iterator.hasNext()) {
             try {
@@ -55,6 +56,7 @@ public class StableVersionsStrategy implements VersionsStrategy {
             }
         }
     }
+
     @Override
     public ArrayList<Document> getEntireHistory(){
         return this.versionsHistory;

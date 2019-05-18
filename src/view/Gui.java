@@ -261,7 +261,7 @@ public class Gui extends Application implements Initializable{
 	}
 
     public void showInfo(){
-        alert.displayI("Info", "This is the gui for a LaTeX editor");
+        alert.displayI("Info", " LaTeX Editor Project 2019. \n Course: Software Engineering");
     }
 
     @FXML

@@ -20,7 +20,7 @@ public class AddLatexCommand implements Command{
     }
 
     private void dynamicallyLoadLatexCommand(String CommandName,String CommandFileName){
-        FileReader reader = new FileReader();
+        FileReader reader = manager.getReader();
         try {
             reader.setPath(CommandFileName);
             LatexCommandsMap.put(CommandName, reader.readFile());

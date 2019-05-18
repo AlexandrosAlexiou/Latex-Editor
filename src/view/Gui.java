@@ -275,7 +275,14 @@ public class Gui extends Application implements Initializable{
     }
     @FXML
     private void rollBack() {
-    	myText.setText(controller.enact("RollbackToPreviousVersionCommand",null));
+    	String previous=controller.enact("RollbackToPreviousVersionCommand",null);
+    	System.out.println(previous);
+    	if(previous==null) {
+    		alert.display("Warning","There is no previous version to roll back to.");
+    	}
+    	else {
+    		myText.setText(previous);
+    	}
     }
 
     @FXML

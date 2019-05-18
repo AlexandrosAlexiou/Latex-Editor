@@ -81,10 +81,9 @@ public class DocumentManager{
     }
 
     public void changeToPreviousVersion(String previousVersion){
-        if(previousVersion!=null){
-           this.currentDocument.setContents(previousVersion);
-           this.currentDocument.setVersionID(this.currentDocument.getVersionID()-1);
-        }
+    	this.currentDocument.setContents(previousVersion);
+    	this.currentDocument.setVersionID(this.currentDocument.getVersionID()-1);
+        
     }
 
     public void changeStrategy(String StrategyType){

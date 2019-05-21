@@ -3,8 +3,8 @@ package controller;
 import java.util.HashMap;
 
 public class LatexEditorController{
-    private String lastSaveLocation= null;
-    private String lastLoadLocation= null;
+    private String SaveLocation = null;
+    private String LoadLocation = null;
     private CommandsFactory factory = new CommandsFactory();
     private HashMap<String, Command> commands = new HashMap<String, Command>();
 
@@ -20,19 +20,29 @@ public class LatexEditorController{
         commands.put("CreateDocumentVersionCommand",factory.createCommand("CreateDocumentVersionCommand"));
     }
 
-    public void setLastSaveLocation(String lastSaveLocation) {
-        this.lastSaveLocation = lastSaveLocation;
+    public void setSaveLocation(String saveLocation) {
+        this.SaveLocation = saveLocation;
     }
 
-    public void setLastLoadLocation(String lastLoadLocation) {
-        this.lastLoadLocation = lastLoadLocation;
+    public void setLoadLocation(String loadLocation) {
+        this.LoadLocation = loadLocation;
     }
 
+    public String getSaveLocation(){
+        return this.SaveLocation;
+    }
+
+    public String getLoadSaveLocation(){
+        return this.LoadLocation;
+    }
+    public HashMap<String, Command> getCommands(){
+        return this.commands;
+    }
     public String enact(String CommandName, String Action){
 
-        if(CommandName.equals("SaveDocumentCommand")){ commands.get(CommandName).manager.getWriter().setPath(lastSaveLocation); }
+        if(CommandName.equals("SaveDocumentCommand")){ commands.get(CommandName).manager.getWriter().setPath(SaveLocation); }
 
-        if(CommandName.equals("LoadDocumentCommand")){ commands.get(CommandName).manager.getReader().setPath(lastLoadLocation); }
+        if(CommandName.equals("LoadDocumentCommand")){ commands.get(CommandName).manager.getReader().setPath(LoadLocation); }
 
         return commands.get(CommandName).execute(Action);
     }

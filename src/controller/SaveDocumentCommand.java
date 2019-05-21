@@ -7,7 +7,6 @@ public class SaveDocumentCommand implements Command {
     @Override
     public  String execute(String typed){
         manager.getWriter().writetofile(typed);
-
-        return "Save Successful";
+        return typed;
     }
 }

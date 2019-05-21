@@ -10,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -88,7 +87,7 @@ public class Gui extends Application implements Initializable{
 			System.out.println("Path to save is:"+pathSave);
 			alreadySaved=true;
 			System.out.println(alreadySaved);
-			this.controller.setLastSaveLocation(pathSave);
+			this.controller.setSaveLocation(pathSave);
 			this.controller.enact("SaveDocumentCommand",text);
 		}
 		else {
@@ -179,7 +178,7 @@ public class Gui extends Application implements Initializable{
 		if (selected!=null) {
 			path=selected.getAbsolutePath();
 			System.out.println("This is the path:"+path);
-			this.controller.setLastLoadLocation(path);
+			this.controller.setLoadLocation(path);
 			myText.setText(controller.enact("LoadDocumentCommand",path));
 		}
 		else {

@@ -273,8 +273,11 @@ public class Gui extends Application implements Initializable{
     @FXML
     private void rollBack() {
     	String previous=controller.enact("RollbackToPreviousVersionCommand",null);
-    	//System.out.println(previous);
-    	if(previous==null) {
+		if(previous.equals("Versioning is Disabled")){
+			alert.display("Version Tracking is disabled.","Please turn on the Version Tracking Mechanism.");
+			return;
+		}
+    	if(previous.equals("No previous Version")) {
     		alert.display("Warning","There is no previous version to roll back to.");
     	}
     	else {
@@ -285,7 +288,10 @@ public class Gui extends Application implements Initializable{
     @FXML
     private void commitChanges() {
         String text=myText.getText();
-    	this.controller.enact("CreateDocumentVersionCommand",text);
+    	String VersionTracking =this.controller.enact("CreateDocumentVersionCommand",text);
+    	if(VersionTracking.equals("Versioning is Disabled")){
+    		alert.display("Version Tracking is disabled.","Please turn on the Version Tracking Mechanism.");
+		}
     }
 
 	public void showInfo(){

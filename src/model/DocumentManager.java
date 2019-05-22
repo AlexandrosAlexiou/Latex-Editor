@@ -12,6 +12,7 @@ public class DocumentManager{
     private HashMap <String, Document> map = new HashMap <String, Document>();
 
     public DocumentManager(){
+        this.Versioning=true;
         this.Strategy=strategyFactory.createStrategy("Volatile");
         dynamicallyLoadTemplate("letter","tex templates/letter-template.tex");
         dynamicallyLoadTemplate("report","tex templates/report-template.tex");
@@ -72,10 +73,10 @@ public class DocumentManager{
 
     public Document createVersion(String contents){
         Document newVersion = new Document(this.currentDocument);
-        this.getCurrentDocument().setVersionID(this.getCurrentDocument().getVersionID() + 1);
         newVersion.setContents(contents);
         newVersion.setVersionID(newVersion.getVersionID() + 1);
         newVersion.setLocationOnDisk(this.currentDocument.getLocationOnDisk());
+        this.currentDocument=newVersion;
         return newVersion;
     }
 

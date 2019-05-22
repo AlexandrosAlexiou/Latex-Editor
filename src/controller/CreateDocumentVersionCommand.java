@@ -8,7 +8,7 @@ public class CreateDocumentVersionCommand implements Command{
     public String execute(String specifyWork) {
         if(manager.VersioningIsEnabled()) {
             manager.getStrategy().putVersion(manager.createVersion(specifyWork));
-            return null;
+            return "New Version created";
         }
         return "Versioning is Disabled";
     }

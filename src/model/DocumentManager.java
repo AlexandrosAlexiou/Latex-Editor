@@ -71,7 +71,6 @@ public class DocumentManager{
     }
 
     public Document createVersion(String contents){
-
         Document newVersion = new Document(this.currentDocument);
         this.getCurrentDocument().setVersionID(this.getCurrentDocument().getVersionID() + 1);
         newVersion.setContents(contents);

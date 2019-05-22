@@ -259,9 +259,7 @@ public class Gui extends Application implements Initializable{
 		myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddItem"));
 	}
 
-    public void showInfo(){
-        alert.displayI("Info", " LaTeX Editor Project 2019. \n Course: Software Engineering");
-    }
+
 
     @FXML
     private void addSimpleTable() {
@@ -275,7 +273,7 @@ public class Gui extends Application implements Initializable{
     @FXML
     private void rollBack() {
     	String previous=controller.enact("RollbackToPreviousVersionCommand",null);
-    	System.out.println(previous);
+    	//System.out.println(previous);
     	if(previous==null) {
     		alert.display("Warning","There is no previous version to roll back to.");
     	}
@@ -290,12 +288,17 @@ public class Gui extends Application implements Initializable{
     	this.controller.enact("CreateDocumentVersionCommand",text);
     }
 
+	public void showInfo(){
+		alert.displayI("Info", " LaTeX Editor Project 2019. \n Course: Software Engineering");
+	}
+
     private void closeProgram(){
         boolean result=ConfirmBox.display("Warning","All unsaved progress will be lost.Are you sure?");
         if(result) {
             window.close();
         }
     }
+
 	public static void main(String[] args){
 		Gui gui = new Gui();
 		launch(args);

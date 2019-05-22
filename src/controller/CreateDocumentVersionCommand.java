@@ -6,7 +6,10 @@ public class CreateDocumentVersionCommand implements Command{
 
     @Override
     public String execute(String specifyWork) {
-        manager.getStrategy().putVersion(manager.createVersion(specifyWork));
-        return null;
+        if(manager.VersioningIsEnabled()) {
+            manager.getStrategy().putVersion(manager.createVersion(specifyWork));
+            return null;
+        }
+        return "Versioning is Disabled";
     }
 }

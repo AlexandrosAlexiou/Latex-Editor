@@ -35,7 +35,7 @@ public class DocumentManager{
         return writer;
     }
 
-    public boolean isEnabled(){ return Versioning; }
+    public boolean VersioningIsEnabled(){ return Versioning; }
 
     public void enableVersioning(){
         this.Versioning = true;

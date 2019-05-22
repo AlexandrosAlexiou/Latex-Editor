@@ -6,8 +6,11 @@ public class RollbackToPreviousVersionCommand implements Command{
 
     @Override
     public String execute(String specifyWork){
+        if(manager.VersioningIsEnabled()) {
+            manager.changeToPreviousVersion(manager.getStrategy().getVersion());
+            return manager.getCurrentDocument().getContents();
+        }
+        return "Versioning is Disabled";
 
-        manager.changeToPreviousVersion(manager.getStrategy().getVersion());
-        return manager.getCurrentDocument().getContents();
     }
 }

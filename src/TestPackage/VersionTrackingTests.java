@@ -50,4 +50,15 @@ public class VersionTrackingTests {
         assertEquals("Test if the Change Version Tracking System mechanism works OK",ExpectedOutput,ActualOutput);
     }
 
+    @Test
+    public final void testRollbackVersion(){
+        LatexEditorController testController=new LatexEditorController();
+        testController.enact("ChangeVersionsStrategyCommand","Volatile");
+        testController.enact("CreateDocumentVersionCommand","Contents1");
+        String ActualOutput =testController.enact("RollbackToPreviousVersionCommand","null");
+        String ExpectedOutput = "Contents1";
+        assertEquals("Test if the Rollback Document version mechanism works OK",ExpectedOutput,ActualOutput);
+
+    }
+
 }

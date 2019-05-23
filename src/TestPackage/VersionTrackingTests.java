@@ -39,4 +39,15 @@ public class VersionTrackingTests {
         assertEquals("Test if the Commit Version mechanism works OK",ExpectedOutput,ActualOutput);
     }
 
+    @Test
+    public final void testChangeStrategy()throws Exception {
+        LatexEditorController testController=new LatexEditorController();
+        testController.enact("ChangeVersionsStrategyCommand","Volatile");
+        testController.enact("CreateDocumentVersionCommand","Contents");
+        testController.enact("ChangeVersionsStrategyCommand","Stable");
+        String ActualOutput = new String(Files.readAllBytes(Paths.get("Stable Versioning/1.tex")));
+        String ExpectedOutput = "Contents";
+        assertEquals("Test if the Change Version Tracking System mechanism works OK",ExpectedOutput,ActualOutput);
+    }
+
 }

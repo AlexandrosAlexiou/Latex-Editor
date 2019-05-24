@@ -1,5 +1,13 @@
 package controller;
-
+/**
+ * <h1>AddLatexCommand</h1>
+ *  class responsible for creating the various Latex commands
+ *  and adding the proper one upon request from the user.
+ *
+ * @version 2.0
+ * @since   2019-05-24
+ *
+ */
 import model.FileReader;
 import java.util.HashMap;
 

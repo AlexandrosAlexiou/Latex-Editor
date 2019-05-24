@@ -1,5 +1,12 @@
 package model;
-
+/**
+ * <h1>VersionsStrategy</h1>
+ * Interface class responsible for handling
+ * the two different types of the Version Tracking Mechanism.
+ *
+ * @version 2.0
+ * @since   2019-05-24
+ */
 import java.util.ArrayList;
 
 public interface VersionsStrategy {

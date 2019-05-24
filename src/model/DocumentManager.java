@@ -1,5 +1,12 @@
 package model;
-
+/**
+ * <h1>DocumentManager</h1>
+ * Responsible for handling all
+ * the different Document edits.
+ *
+ * @version 2.0
+ * @since   2019-05-24
+ */
 import java.util.HashMap;
 
 public class DocumentManager{

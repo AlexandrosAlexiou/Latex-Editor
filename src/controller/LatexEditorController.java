@@ -1,5 +1,12 @@
 package controller;
-
+/**
+ * <h1>LatexEditorController</h1>
+ *  class responsible for communicating with the model package and to update the Gui text field.
+ *
+ * @version 2.0
+ * @since   2019-05-24
+ *
+ */
 import java.util.HashMap;
 
 public class LatexEditorController{

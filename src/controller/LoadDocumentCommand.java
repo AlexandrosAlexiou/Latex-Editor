@@ -1,5 +1,12 @@
 package controller;
-
+/**
+ * <h1>LoadDocumentCommand</h1>
+ *  class responsible for loading a .tex file from disk storage.
+ *
+ * @version 2.0
+ * @since   2019-05-24
+ *
+ */
 public class LoadDocumentCommand implements Command {
 
     public LoadDocumentCommand(){}

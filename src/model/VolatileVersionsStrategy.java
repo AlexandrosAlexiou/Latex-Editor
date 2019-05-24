@@ -1,5 +1,12 @@
 package model;
-
+/**
+ * <h1>StableVersionsStrategy</h1>
+ *  class responsible for holding the various Document version on main memory.
+ *
+ * @version 2.0
+ * @since   2019-05-24
+ *
+ */
 import java.util.ArrayList;
 
 public class VolatileVersionsStrategy implements VersionsStrategy {

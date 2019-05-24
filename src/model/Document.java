@@ -1,5 +1,12 @@
 package model;
-
+/**
+ * <h1>Document</h1>
+ *  class responsible for the simulation of a Latex Document.
+ *
+ * @version 2.0
+ * @since   2019-05-24
+ *
+ */
 public class Document{
 
     private String contents;

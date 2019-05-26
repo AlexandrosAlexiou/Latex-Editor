@@ -1,7 +1,7 @@
 package model;
 /**
  * <h1>StableVersionsStrategy</h1>
- *  class responsible for holding the various Document version on main memory.
+ *  class responsible for holding the various Document versions in main memory.
  *
  * @version 2.0
  * @since   2019-05-24

@@ -27,8 +27,6 @@ public class Gui extends Application implements Initializable{
 	private boolean article=false;
 	private Stage window;
 	private boolean alreadySaved=false;
-	private String storageStrategy="Volatile";
-	private boolean versionTracking=true;
 	@FXML private MenuBar myMenuBar;
 	@FXML private Text myLabel;
 	@FXML private Menu saveStrategy;

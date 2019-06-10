@@ -35,18 +35,6 @@ public class LatexEditorController{
         this.LoadLocation = loadLocation;
     }
 
-    public String getSaveLocation(){
-        return this.SaveLocation;
-    }
-
-    public String getLoadSaveLocation(){
-        return this.LoadLocation;
-    }
-
-    public HashMap<String, Command> getCommands(){
-        return this.commands;
-    }
-
     public String enact(String CommandName, String Action){
 
         if(CommandName.equals("SaveDocumentCommand")){ commands.get(CommandName).manager.getWriter().setPath(SaveLocation); }

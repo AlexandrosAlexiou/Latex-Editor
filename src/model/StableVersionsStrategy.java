@@ -39,7 +39,7 @@ public class StableVersionsStrategy implements VersionsStrategy {
             try {
                 //System.out.println(maxVersionNumber);
                 contents = new String(Files.readAllBytes(Paths.get(this.versionsPath + (this.versionsHistory.size()) + ".tex")));
-                versionsHistory.remove(maxVersionNumber);
+                versionsHistory.remove(this.versionsHistory.size()-1);
 
             } catch (IOException e) {
                 e.printStackTrace();

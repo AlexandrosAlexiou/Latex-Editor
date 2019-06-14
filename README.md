@@ -11,11 +11,15 @@ A Latex Editor in Java
 [US-3] As a user, I want to add Latex commands in the Latex document automatically using the application user interface. A minimal set of Latex commands that I want to use is given in Table 1. Some of the commands are allowed only for specific types of Latex documents. The application should notify me if I try to add Latex commands that are not allowed in the Latex document.
 
 [US-4] As a user, I should be able to activate an automatic version tracking mechanism that keeps track of the document evolution history, at any time. The history consists of a sequence of subsequent versions of the Latex document. The mechanism should provide at least two alternative storage strategies for the document evolution history:
+
 -Volatile (default strategy): for each document change the mechanism keeps the previous version of the document in a main memory list of subsequent document versions.
+
 -Stable: for each document change the mechanism keeps the previous version of the document on disk storage.
 
 [US-5] As a user, I should be able to change the storage strategy of the version tracking mechanism at any time.
+
 -If I change from Volatile to Stable the application should store the document evolution history on disk storage.
+
 -If I change from Stable to Volatile the application should load the document evolution history from disk storage to main memory.
 
 [US-6] As a user, I should be able to disable the version tracking mechanism at any time.

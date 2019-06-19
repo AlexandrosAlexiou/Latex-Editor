@@ -14,9 +14,9 @@ public class VersionTrackingTests {
     public final void testDisableVersionTracking() {
         LatexEditorController testController=new LatexEditorController();
         testController.enact("DisableVersionsManagementCommand","disable");
-        String ActualOutput = testController.enact("CreateDocumentVersionCommand","Contents");
-        String ExpectedOutput = "Versioning is Disabled";
-        assertEquals("Test if the Disable Version Tracking mechanism works OK",ExpectedOutput,ActualOutput);
+        String actualOutput = testController.enact("CreateDocumentVersionCommand","Contents");
+        String expectedOutput = "Versioning is Disabled";
+        assertEquals("Test if the Disable Version Tracking mechanism works OK",expectedOutput,actualOutput);
     }
 
     @Test
@@ -25,9 +25,9 @@ public class VersionTrackingTests {
         testController.enact("EnableVersionsManagementCommand","enable");
         testController.enact("ChangeVersionsStrategyCommand","Volatile");
         testController.enact("CreateDocumentVersionCommand","Contents");
-        String ActualOutput =testController.enact("RollbackToPreviousVersionCommand",null);
-        String ExpectedOutput = "Contents";
-        assertEquals("Test if the Commit Version mechanism works OK",ExpectedOutput,ActualOutput);
+        String actualOutput =testController.enact("RollbackToPreviousVersionCommand",null);
+        String expectedOutput = "Contents";
+        assertEquals("Test if the Commit Version mechanism works OK",expectedOutput,actualOutput);
     }
 
     @Test
@@ -36,9 +36,9 @@ public class VersionTrackingTests {
         testController.enact("EnableVersionsManagementCommand","enable");
         testController.enact("ChangeVersionsStrategyCommand","Stable");
         testController.enact("CreateDocumentVersionCommand","Contents");
-        String ActualOutput = new String(Files.readAllBytes(Paths.get("Stable Versioning/1.tex")));
-        String ExpectedOutput = "Contents";
-        assertEquals("Test if the Commit Version mechanism works OK",ExpectedOutput,ActualOutput);
+        String actualOutput = new String(Files.readAllBytes(Paths.get("Stable Versioning/1.tex")));
+        String expectedOutput = "Contents";
+        assertEquals("Test if the Commit Version mechanism works OK",expectedOutput,actualOutput);
     }
 
     @Test
@@ -47,9 +47,9 @@ public class VersionTrackingTests {
         testController.enact("ChangeVersionsStrategyCommand","Volatile");
         testController.enact("CreateDocumentVersionCommand","Contents");
         testController.enact("ChangeVersionsStrategyCommand","Stable");
-        String ActualOutput = new String(Files.readAllBytes(Paths.get("Stable Versioning/1.tex")));
-        String ExpectedOutput = "Contents";
-        assertEquals("Test if the Change Version Tracking System mechanism works OK",ExpectedOutput,ActualOutput);
+        String actualOutput = new String(Files.readAllBytes(Paths.get("Stable Versioning/1.tex")));
+        String expectedOutput = "Contents";
+        assertEquals("Test if the Change Version Tracking System mechanism works OK",expectedOutput,actualOutput);
     }
 
     @Test
@@ -57,9 +57,9 @@ public class VersionTrackingTests {
         LatexEditorController testController=new LatexEditorController();
         testController.enact("ChangeVersionsStrategyCommand","Volatile");
         testController.enact("CreateDocumentVersionCommand","Contents1");
-        String ActualOutput =testController.enact("RollbackToPreviousVersionCommand","null");
-        String ExpectedOutput = "Contents1";
-        assertEquals("Test if the Rollback Document version mechanism works OK",ExpectedOutput,ActualOutput);
+        String actualOutput =testController.enact("RollbackToPreviousVersionCommand","null");
+        String expectedOutput = "Contents1";
+        assertEquals("Test if the Rollback Document version mechanism works OK",expectedOutput,actualOutput);
 
     }
 

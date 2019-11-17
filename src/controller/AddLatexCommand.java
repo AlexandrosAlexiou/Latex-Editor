@@ -28,10 +28,9 @@ public class AddLatexCommand implements Command{
     }
 
     private void dynamicallyLoadLatexCommand(String CommandName,String CommandFileName){
-        FileReader reader = manager.getReader();
         try {
-            reader.setPath(CommandFileName);
-            LatexCommandsMap.put(CommandName, reader.readFile());
+            manager.getReader().setPath(CommandFileName);
+            LatexCommandsMap.put(CommandName, manager.getReader().readFile());
         } catch (Exception e) {
             e.printStackTrace();
         }

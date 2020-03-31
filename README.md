@@ -39,5 +39,6 @@ A Latex Editor in Java
     * Prototype Pattern.
     * Parameterized Factory Pattern.
     * Strategy Pattern.
-
+    
+### Class Diagram
 ![Class Diagram](https://github.com/AlexandrosAlexiou/Latex-Editor/blob/master/Class%20Diagram.png)

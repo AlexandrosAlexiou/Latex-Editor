@@ -40,3 +40,4 @@ A Latex Editor in Java
     * Parameterized Factory Pattern.
     * Strategy Pattern.
 
+![Class Diagram](https://github.com/AlexandrosAlexiou/Latex-Editor/blob/master/Class%20Diagram.png)

@@ -94,6 +94,8 @@ public class Gui extends Application implements Initializable{
 
 	}
 
+
+	@FXML
 	public void viewReportTemplate(){
 		boolean result=ConfirmBox.display("Warning","Opening a new template.Are you sure?");
 		if(result) {
@@ -105,6 +107,8 @@ public class Gui extends Application implements Initializable{
 		}
 	}
 
+
+	@FXML
 	public void viewLetterTemplate(){
 		boolean result=ConfirmBox.display("Warning","Opening a new template.Are you sure?");
 			if(result) {
@@ -116,6 +120,8 @@ public class Gui extends Application implements Initializable{
 			}
 	}
 
+
+	@FXML
 	public void viewBookTemplate(){
 		boolean result=ConfirmBox.display("Warning","Opening a new template.Are you sure?");
 		if(result) {
@@ -127,6 +133,8 @@ public class Gui extends Application implements Initializable{
 		}
 	}
 
+
+	@FXML
 	public void viewArticleTemplate(){
 		boolean result=ConfirmBox.display("Warning","Opening a new template.Are you sure?");
 		if(result) {
@@ -138,6 +146,7 @@ public class Gui extends Application implements Initializable{
 		}
 	}
 
+
 	@FXML
 	private void enableVersionTracking(){
 		offBox.setVisible(true);
@@ -146,6 +155,8 @@ public class Gui extends Application implements Initializable{
 		this.controller.enact("EnableVersionsManagementCommand","enable");
 		
 	}
+
+
 	@FXML
 	private void disableVersionTracking(){
 		onBox.setVisible(true);
@@ -154,18 +165,22 @@ public class Gui extends Application implements Initializable{
 		this.controller.enact("DisableVersionsManagementCommand","disable");
 	}
 
+
 	@FXML
 	private void enableVolatileStrategy(){
 		volatileBox.setVisible(false);
 		stableBox.setVisible(true);
 		this.controller.enact("ChangeVersionsStrategyCommand","Volatile");
 	}
+
+
 	@FXML
 	private void enableStableStrategy(){
 		stableBox.setVisible(false);
 		volatileBox.setVisible(true);
 		this.controller.enact("ChangeVersionsStrategyCommand","Stable");
 	}
+
 
 	@FXML
 	private void openFile(){
@@ -184,6 +199,7 @@ public class Gui extends Application implements Initializable{
 		}
 	}
 
+
 	@FXML
 	private void closeFile(){
 		boolean result=ConfirmBox.display("Warning","All unsaved progress will be lost.Are you sure?");
@@ -192,6 +208,7 @@ public class Gui extends Application implements Initializable{
 			window.close();
 		}
 	}
+
 
 	@FXML
 	private void addChapter(){
@@ -202,6 +219,7 @@ public class Gui extends Application implements Initializable{
 			myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddChapter"));
 		}
 	}
+
 
 	@FXML
 	private void addSection(){
@@ -214,6 +232,7 @@ public class Gui extends Application implements Initializable{
 		}
 	}
 
+
 	@FXML
 	private void addSubsection(){
 		if (letter) {
@@ -224,6 +243,7 @@ public class Gui extends Application implements Initializable{
 		}
 	}
 
+
 	@FXML
 	private void addSubsubsection(){
 		if (letter) {
@@ -233,6 +253,7 @@ public class Gui extends Application implements Initializable{
 			myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddSubSubSection"));
 		}
 	}
+
 
 	@FXML
 	private void addItemList(){
@@ -246,11 +267,13 @@ public class Gui extends Application implements Initializable{
 
 	}
 
+
 	@FXML
 	private void addBullet(){
 		myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddItem"));
 
 	}
+
 
 	@FXML
 	private void addEnum(){
@@ -258,16 +281,19 @@ public class Gui extends Application implements Initializable{
 	}
 
 
-
     @FXML
     private void addSimpleTable() {
 		myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddTable"));
     }
+
+
     @FXML
     private void addGraphicsTable() {
 		myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddGTable"));
     	
     }
+
+
     @FXML
     private void rollBack() {
     	String previous=controller.enact("RollbackToPreviousVersionCommand",null);
@@ -283,6 +309,7 @@ public class Gui extends Application implements Initializable{
     	}
     }
 
+
     @FXML
     private void commitChanges() {
         String text=myText.getText();
@@ -292,10 +319,12 @@ public class Gui extends Application implements Initializable{
 		}
     }
 
+	@FXML
 	public void showInfo(){
 		alert.displayI("Info", " LaTeX Editor Project 2019. \n Course: Software Engineering");
 	}
 
+	@FXML
     private void closeProgram(){
         boolean result=ConfirmBox.display("Warning","All unsaved progress will be lost.Are you sure?");
         if(result) {

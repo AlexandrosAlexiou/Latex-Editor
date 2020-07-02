@@ -32,7 +32,7 @@ A LaTeX Editor in Java 8.
 <br/>
 <br/>
 
-### Design
+## Design
 * We used the MVC (Model View Controller) package design.
 <br/>
 <br/>
@@ -46,12 +46,12 @@ A LaTeX Editor in Java 8.
 <br/>
 <br/>
 
-### Acceptance Testing
+## Acceptance Testing
 ![](src/assets/JUnit.png)
 * We used the [Junit](https://github.com/junit-team/junit4) Framework to test the application.<br/>
 * Run AllTests to execute the unit tests via Junit.
 <br/>
 <br/>
 
-### Class Diagram
+## Class Diagram
 ![Class Diagram](https://github.com/AlexandrosAlexiou/Latex-Editor/blob/master/Class%20Diagram.png)

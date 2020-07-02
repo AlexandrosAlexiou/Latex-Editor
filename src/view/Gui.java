@@ -21,7 +21,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class Gui extends Application implements Initializable{
+public class Gui extends Application implements Initializable {
 
 	private boolean letter=false;
 	private boolean article=false;
@@ -35,21 +35,21 @@ public class Gui extends Application implements Initializable{
 	@FXML private MenuItem offBox;
 	@FXML private MenuItem volatileBox;
 	@FXML private MenuItem stableBox;
-	private LatexEditorController controller=new LatexEditorController();
+	private final LatexEditorController controller=new LatexEditorController();
 
-	public Gui(){}
+	public Gui() {}
 
 	@Override
-	public void start(Stage primaryStage)throws Exception{
+	public void start(Stage primaryStage) throws Exception {
 		Parent root;
 		root=FXMLLoader.load(getClass().getResource("first.fxml"));
 		window=primaryStage;
 		primaryStage.setTitle("3A LaTeX Editor");
-		Image image=new Image("/images/tex.jpg");
+		Image image = new Image("assets/tex.jpg");
 		window.getIcons().add(image);
 		primaryStage.setScene(new Scene(root,600,750));
 		primaryStage.show();
-		primaryStage.setOnCloseRequest(e->{
+		primaryStage.setOnCloseRequest(e -> {
 			e.consume();
 			closeProgram();
 		});
@@ -60,16 +60,15 @@ public class Gui extends Application implements Initializable{
 	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
 	 */
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1){
+	public void initialize(URL arg0, ResourceBundle arg1) {
 		onBox.setVisible(false);
 		saveStrategy.setVisible(true);
 		volatileBox.setVisible(false);
-		
-
 	}
 
+
 	@FXML
-	private void save(){
+	private void save() {
 		String text=myText.getText();
 		String pathSave;
 		FileChooser fc=new FileChooser();
@@ -96,7 +95,7 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	public void viewReportTemplate(){
+	public void viewReportTemplate() {
 		boolean result=ConfirmBox.display("Warning","Opening a new template.Are you sure?");
 		if(result) {
 			alreadySaved=false;
@@ -109,7 +108,7 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	public void viewLetterTemplate(){
+	public void viewLetterTemplate() {
 		boolean result=ConfirmBox.display("Warning","Opening a new template.Are you sure?");
 			if(result) {
 				alreadySaved=false;
@@ -122,7 +121,7 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	public void viewBookTemplate(){
+	public void viewBookTemplate() {
 		boolean result=ConfirmBox.display("Warning","Opening a new template.Are you sure?");
 		if(result) {
 			alreadySaved=false;
@@ -135,7 +134,7 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	public void viewArticleTemplate(){
+	public void viewArticleTemplate() {
 		boolean result=ConfirmBox.display("Warning","Opening a new template.Are you sure?");
 		if(result) {
 			alreadySaved=false;
@@ -148,7 +147,7 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	private void enableVersionTracking(){
+	private void enableVersionTracking() {
 		offBox.setVisible(true);
 		onBox.setVisible(false);
 		saveStrategy.setVisible(true);
@@ -158,7 +157,7 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	private void disableVersionTracking(){
+	private void disableVersionTracking() {
 		onBox.setVisible(true);
 		offBox.setVisible(false);
 		saveStrategy.setVisible(false);
@@ -167,7 +166,7 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	private void enableVolatileStrategy(){
+	private void enableVolatileStrategy() {
 		volatileBox.setVisible(false);
 		stableBox.setVisible(true);
 		this.controller.enact("ChangeVersionsStrategyCommand","Volatile");
@@ -175,7 +174,7 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	private void enableStableStrategy(){
+	private void enableStableStrategy() {
 		stableBox.setVisible(false);
 		volatileBox.setVisible(true);
 		this.controller.enact("ChangeVersionsStrategyCommand","Stable");
@@ -183,7 +182,7 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	private void openFile(){
+	private void openFile() {
         String path;
 		FileChooser fc=new FileChooser();
 		fc.getExtensionFilters().add(new ExtensionFilter("TeX Files","*.tex"));
@@ -201,7 +200,7 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	private void closeFile(){
+	private void closeFile() {
 		boolean result=ConfirmBox.display("Warning","All unsaved progress will be lost.Are you sure?");
 		if(result) {
 			window=(Stage)myMenuBar.getScene().getWindow();
@@ -211,7 +210,7 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	private void addChapter(){
+	private void addChapter() {
 		if ((article)||(letter)){
 			alert.display("Warning", "Chapter not applicable in this template format");
 		}
@@ -222,7 +221,7 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	private void addSection(){
+	private void addSection() {
 		if(letter) {
 			alert.display("Warning", "Section not applicable in this template format");
 		}
@@ -234,7 +233,7 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	private void addSubsection(){
+	private void addSubsection() {
 		if (letter) {
 			alert.display("Warning", "Subsection not applicable in this template format");
 		}
@@ -245,7 +244,7 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	private void addSubsubsection(){
+	private void addSubsubsection() {
 		if (letter) {
 			alert.display("Warning", "Subsubsection not applicable in this template format");
 		}
@@ -256,20 +255,20 @@ public class Gui extends Application implements Initializable{
 
 
 	@FXML
-	private void addItemList(){
+	private void addItemList() {
 		myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddItemList"));
 	}
 
 
 	@FXML
-	private void addEnumList(){
+	private void addEnumList() {
 		myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddEnumList"));
 
 	}
 
 
 	@FXML
-	private void addBullet(){
+	private void addBullet() {
 		myText.insertText(myText.getCaretPosition(),controller.enact("AddLatexCommand","AddItem"));
 
 	}
@@ -324,15 +323,17 @@ public class Gui extends Application implements Initializable{
 		alert.displayI("Info", " LaTeX Editor Project 2019. \n Course: Software Engineering");
 	}
 
+
 	@FXML
-    private void closeProgram(){
+    private void closeProgram() {
         boolean result=ConfirmBox.display("Warning","All unsaved progress will be lost.Are you sure?");
         if(result) {
             window.close();
         }
     }
 
-	public static void main(String[] args){
+
+	public static void main(String[] args) {
 		Gui gui = new Gui();
 		launch(args);
 	}

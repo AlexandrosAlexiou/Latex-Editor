@@ -1,6 +1,6 @@
 # Latex-Editor
 
-A Latex Editor in Java
+A LaTeX Editor in Java 8.
 
 ## User Stories
 
@@ -29,16 +29,29 @@ A Latex Editor in Java
 * [US-8] As a user, I should be able to save the Latex document on disk storage.
 
 * [US-9] As a user, I should be able to load the Latex document from disk storage.
+<br/>
+<br/>
 
 ### Design
-
 * We used the MVC (Model View Controller) package design.
+<br/>
+<br/>
 
+![](src/assets/mvc.png)
 * Design Patterns used:
     * Command Pattern.
     * Prototype Pattern.
     * Parameterized Factory Pattern.
     * Strategy Pattern.
-    
+<br/>
+<br/>
+
+### Acceptance Testing
+![](src/assets/JUnit.png)
+* We used the [Junit](https://github.com/junit-team/junit4) Framework to test the application.<br/>
+* Run AllTests to execute the unit tests via Junit.
+<br/>
+<br/>
+
 ### Class Diagram
 ![Class Diagram](https://github.com/AlexandrosAlexiou/Latex-Editor/blob/master/Class%20Diagram.png)

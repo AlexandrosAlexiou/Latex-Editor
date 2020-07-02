@@ -12,7 +12,7 @@ public class alert {
 		Stage window=new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);	
 		
-		Image image=new Image("/images/warn.png");
+		Image image=new Image("/assets/warn.png");
 		window.getIcons().add(image);
 		
 		window.setTitle(title);
@@ -32,7 +32,7 @@ public class alert {
 		Stage window=new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);	
 		
-		Image image=new Image("/images/info.png");
+		Image image=new Image("/assets/info.png");
 		window.getIcons().add(image);
 		
 		window.setTitle(title);

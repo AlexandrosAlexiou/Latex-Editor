@@ -49,7 +49,7 @@ A LaTeX Editor in Java 8.
 ## Acceptance Testing
 ![](src/assets/JUnit.png)
 * We used the [Junit](https://github.com/junit-team/junit4) Framework to test the application.<br/>
-* Run AllTests to execute the unit tests via Junit.
+* Run `AllTests` to execute the tests via Junit.
 <br/>
 <br/>
 

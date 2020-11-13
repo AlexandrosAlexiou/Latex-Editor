@@ -1,16 +1,45 @@
+HELP.md
+
+### STS ###
+.apt_generated
 .classpath
-.idea/
+.factorypath
 .project
-.settings/
-Latex Editor.iml
-bin/
-build.fxbuild
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### MAC OS ###
 .DS_Store
- src/.DS_Store
-Latex-Editor.iml
-out/
-src/sample/
-classdiagram.uml
-last.uml
-updated.uml
-Stable Versioning/
+
+### Maven ###
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
